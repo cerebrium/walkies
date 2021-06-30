@@ -1,24 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [welcomeClass, setWelcomeClass] = useState('welcome')
+
+  // add the animation
+  useEffect(() => {
+    setTimeout(() => {
+      setWelcomeClass('dissapear')
+    }, 1000)
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="titleContainer">
+        <h1 className='title'>
+          <span className={welcomeClass}>Welcome to </span>
+          WALKIES
+        </h1>
+      </div>
+      <div className="inforStatementContainer">
+        <h3>Please fill in your information to be matched with a dog partner!</h3>
+      </div>
+      <div className="iframeContainer">
+        <iframe title='dubsado form' src="https://hello.dubsado.com:443/public/form/view/60d9fd97727c3a504ed9e9ce" style={{
+          width: "1px",
+          minWidth: "100%",
+          height: "600px"
+        }}></iframe>
+
+      </div>
     </div>
   );
 }
